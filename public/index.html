@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeBattle - 1v1 Coding Challenge</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Add CodeMirror for code editor -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <!-- Language modes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/clike/clike.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>CodeBattle - 1v1 Coding Challenge</h1>
+
+        <div id="login-screen">
+            <h2>Enter Your Name</h2>
+            <div class="input-group">
+                <input type="text" id="username-input" placeholder="Your name">
+                <button id="join-btn">Join Battle</button>
+            </div>
+        </div>
+
+        <div id="waiting-screen" class="hidden">
+            <h2>Waiting for an opponent...</h2>
+            <div class="loader"></div>
+        </div>
+
+        <div id="battle-screen" class="hidden">
+            <div class="battle-header">
+                <div class="player-info">
+                    <h3>You</h3>
+                    <p id="player-name"></p>
+                    <div class="progress-container">
+                        <div class="progress-label">Progress:</div>
+                        <div class="progress-bar">
+                            <div id="player-progress" class="progress-fill"></div>
+                        </div>
+                        <div id="player-progress-percent">0%</div>
+                    </div>
+                </div>
+                <div class="vs">VS</div>
+                <div class="player-info">
+                    <h3>Opponent</h3>
+                    <p id="opponent-name"></p>
+                    <div class="progress-container">
+                        <div class="progress-label">Progress:</div>
+                        <div class="progress-bar">
+                            <div id="opponent-progress" class="progress-fill"></div>
+                        </div>
+                        <div id="opponent-progress-percent">0%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="battle-content">
+                <div class="problem-panel">
+                    <div class="panel-header">
+                        <h3>Problem: <span id="problem-title">Two Sum</span></h3>
+                    </div>
+                    <div class="problem-description">
+                        <div id="problem-text">
+                            <p>Given an array of integers <code>nums</code> and an integer <code>target</code>, return indices of the two numbers such that they add up to <code>target</code>.</p>
+                            <p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+                            <p>You can return the answer in any order.</p>
+
+                            <h4>Example 1:</h4>
+                            <pre>
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+                            </pre>
+
+                            <h4>Example 2:</h4>
+                            <pre>
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+                            </pre>
+
+                            <h4>Constraints:</h4>
+                            <ul>
+                                <li>2 <= nums.length <= 10^4</li>
+                                <li>-10^9 <= nums[i] <= 10^9</li>
+                                <li>-10^9 <= target <= 10^9</li>
+                                <li>Only one valid answer exists.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="test-cases">
+                        <h4>Test Cases</h4>
+                        <div class="test-case">
+                            <div class="test-case-header">Test Case 1</div>
+                            <div class="test-case-content">
+                                <pre>nums = [2,7,11,15], target = 9</pre>
+                                <div>Expected: [0,1]</div>
+                            </div>
+                        </div>
+                        <div class="test-case">
+                            <div class="test-case-header">Test Case 2</div>
+                            <div class="test-case-content">
+                                <pre>nums = [3,2,4], target = 6</pre>
+                                <div>Expected: [1,2]</div>
+                            </div>
+                        </div>
+                        <div class="test-case">
+                            <div class="test-case-header">Test Case 3</div>
+                            <div class="test-case-content">
+                                <pre>nums = [3,3], target = 6</pre>
+                                <div>Expected: [0,1]</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-panel">
+                    <div class="panel-header">
+                        <div class="panel-header-left">
+                            <h3>Your Solution</h3>
+                            <div class="language-selector">
+                                <label for="language-select">Language:</label>
+                                <select id="language-select">
+                                    <option value="javascript">JavaScript</option>
+                                    <option value="python">Python</option>
+                                    <option value="java">Java</option>
+                                    <option value="cpp">C++</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button id="run-btn">Run Tests</button>
+                            <button id="submit-btn">Submit</button>
+                        </div>
+                    </div>
+                    <div class="editor-container">
+                        <textarea id="code-editor">/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+function twoSum(nums, target) {
+    // Write your solution here
+
+}</textarea>
+                    </div>
+                    <div class="results-container">
+                        <div class="panel-header">
+                            <h3>Results</h3>
+                        </div>
+                        <div id="test-results"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-container">
+                <div class="panel-header">
+                    <h3>Chat</h3>
+                </div>
+                <div id="messages"></div>
+                <div class="input-group">
+                    <input type="text" id="message-input" placeholder="Type a message...">
+                    <button id="send-btn">Send</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="winner-screen" class="hidden">
+            <h2 id="winner-title">You Won!</h2>
+            <div id="winner-message"></div>
+            <div class="final-stats">
+                <div class="stat">
+                    <div class="stat-label">Your Time:</div>
+                    <div id="player-time" class="stat-value">00:00</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Opponent Time:</div>
+                    <div id="opponent-time" class="stat-value">00:00</div>
+                </div>
+            </div>
+            <button id="play-again-btn">Play Again</button>
+        </div>
+
+        <div id="disconnected-screen" class="hidden">
+            <h2>Opponent Disconnected</h2>
+            <p>Your opponent has left the battle.</p>
+            <button id="rejoin-btn">Find New Opponent</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>
